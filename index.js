@@ -32,6 +32,26 @@ try {
                         ...running[run],
                     }
                 }
+            } else {
+                if (running[run].unknown.length > 0) {
+                    let unknowns = running[run].unknown.map(x => {
+                        const keys = Object.keys(x).find(y => JSON.stringify(response.status) === y)
+                        if (keys) {
+                            return {
+                                ...x,
+                                [keys]: x[keys] += 1
+                            }
+                        } else {
+                            return {
+                                ...x,
+                                [response.status]: 1
+                            }
+                        }
+                    })
+                    running[run].unknown = unknowns
+                } else {
+                    running[run].unknown.push({[response.status]: 1})
+                }
             }
         } catch(error) {
             if (error.response.status === 403) {
@@ -49,6 +69,26 @@ try {
                         blockEnvoy: running[run].blockEnvoy += 1,
                         ...running[run],
                     }
+                }
+            } else {
+                if (running[run].unknown.length > 0) {
+                    let unknowns = running[run].unknown.map(x => {
+                        const keys = Object.keys(x).find(y => JSON.stringify(error.response.status) === y)
+                        if (keys) {
+                            return {
+                                ...x,
+                                [keys]: x[keys] += 1
+                            }
+                        } else {
+                            return {
+                                ...x,
+                                [error.response.status]: 1
+                            }
+                        }
+                    })
+                    running[run].unknown = unknowns
+                } else {
+                    running[run].unknown.push({[error.response.status]: 1})
                 }
             }
         }
@@ -69,6 +109,7 @@ try {
                 success: 0,
                 blockWAF: 0,
                 blockEnvoy: 0,
+                unknown: [],
             }
         }
     
