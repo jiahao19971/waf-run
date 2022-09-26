@@ -61,7 +61,7 @@ try {
         console.log("")
         console.log("I am running every minute")
         run += 1
-    
+        
         running = {
             ...running,
             [run]: {
@@ -85,7 +85,7 @@ try {
     var delay = 60 * 1000; // 1 min in msec
     var start = delay - (now.getSeconds()) * 1000 + now.getMilliseconds();
     
-    console.log("Starting at:" + now)
+    console.log("Starting at: " + now)
     
     setTimeout(function() {
         const interval = setInterval(() => {
