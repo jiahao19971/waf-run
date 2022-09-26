@@ -60,6 +60,7 @@ try {
     const RunFunctionLoop = () => {
         console.log("")
         console.log("I am running every minute")
+
         run += 1
         
         running = {
@@ -71,7 +72,7 @@ try {
             }
         }
     
-        for(let i = 0; i < 100; i ++) {
+        for(let i = 0; i < number_of_request; i ++) {
             GetRequest(run)
             if (i === completed) {
                 console.log("run: " + run)
