@@ -117,7 +117,7 @@ try {
             GetRequest(run)
             if (i === completed) {
                 console.log("run: " + run)
-                console.log("result: " + JSON.stringify(running))
+                console.log("result for run " + (run - 1) + ": " + JSON.stringify(running, null, 4))
                 console.log("\n")
             }
         }
@@ -147,8 +147,10 @@ try {
         if (run === endrun) {
             var completed = new Date();
 
-            console.log("result: " + JSON.stringify(running))
-            fs.writeFile (`${endrun}MinutesRun.json`, JSON.stringify(running), function(err) {
+            const rslt = JSON.stringify(running, null, 4)
+
+            console.log("result for run "+ endrun + ": " + rslt)
+            fs.writeFile (`${endrun}MinutesRun.json`, rslt, function(err) {
                 if (err) throw err;
                 console.log('complete');
                 }
