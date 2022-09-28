@@ -1,5 +1,8 @@
 # waf-run
 
+## Description
+This is a repo created to test api requests to an endpoint per minute.
+The environment allow to set the amount of requests to send per minute and how long the request should run.
 
 ## Setup
 

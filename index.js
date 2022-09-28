@@ -113,7 +113,7 @@ try {
             }
         }
     
-        for(let i = 0; i < number_of_request; i ++) {
+        for(let i = 0; i < number_of_request; i++) {
             GetRequest(run)
             if (i === completed) {
                 console.log("run: " + run)
